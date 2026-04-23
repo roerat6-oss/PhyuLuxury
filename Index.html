@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phyu Luxury - Official Store</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; color: #333; overflow-x: hidden; background: #fff; }
+
+        /* --- TOP BAR --- */
+        .top-bar { background: #f3ece4; color: #8b7355; text-align: center; padding: 10px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* --- HEADER --- */
+        .main-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #f0f0f0; background: #fff; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 32px; color: #c5a676; text-decoration: none; font-weight: 600; letter-spacing: -1px; }
+        .header-icons { display: flex; gap: 15px; font-size: 18px; }
+
+        /* --- HERO BANNER --- */
+        .hero { 
+            position: relative;
+            background-image: url('https://i.imgur.com/N6ungTH.png'); 
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .hero-content { 
+            position: relative; z-index: 2; max-width: 380px; 
+            background: rgba(255, 255, 255, 0.4); padding: 25px;
+            border-radius: 5px; backdrop-filter: blur(2px);
+        }
+        .hero-subtitle { font-size: 10px; letter-spacing: 2px; color: #8b7355; margin-bottom: 10px; text-transform: uppercase; font-weight: 600; }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: 36px; line-height: 1.2; margin-bottom: 15px; }
+        .hero-desc { font-size: 13px; color: #444; margin-bottom: 25px; line-height: 1.6; }
+        .btn-gold { background: #c5a676; color: #fff; padding: 12px 25px; text-decoration: none; font-size: 12px; font-weight: 600; display: inline-block; letter-spacing: 1px; }
+
+        /* --- FEATURES --- */
+        .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 40px 20px; background: #fff; }
+        .f-item { display: flex; align-items: center; gap: 12px; }
+        .f-item i { font-size: 20px; color: #c5a676; }
+        .f-text h3 { font-size: 11px; font-weight: 600; text-transform: uppercase; }
+        .f-text p { font-size: 10px; color: #888; }
+
+        /* --- PRODUCTS --- */
+        .products { padding: 50px 20px; text-align: center; background: #fff; }
+        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 30px; }
+        .p-card { text-align: left; }
+        .p-img { background: #fdfaf7; padding: 10px; margin-bottom: 12px; display: flex; justify-content: center; border-radius: 4px; border: 1px solid #f3ece4; overflow: hidden; }
+        .p-img img { width: 100%; height: auto; transition: transform 0.5s ease; object-fit: cover; aspect-ratio: 1/1; }
+        .p-card:hover .p-img img { transform: scale(1.05); }
+        .p-info h3 { font-size: 13px; font-weight: 500; color: #333; }
+        .p-info .price { font-size: 12px; color: #8b7355; margin-top: 5px; font-weight: 600; }
+
+        /* --- ABOUT SECTION (RESPONSIVE) --- */
+        .about-final { position: relative; width: 100%; background: #000; overflow: hidden; line-height: 0; }
+        .about-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 70%; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 40%, transparent 100%); z-index: 1; }
+        .about-content { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 20px; text-align: center; color: #fff; z-index: 2; }
+
+        /* --- FOOTER --- */
+        footer { padding: 50px 20px; border-top: 1px solid #eee; background: #fff; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 32px; color: #c5a676; margin-bottom: 20px; font-weight: 600; }
+        .footer-col h4 { font-size: 11px; margin-bottom: 15px; letter-spacing: 2px; font-weight: 700; }
+        .footer-col li { font-size: 12px; color: #666; margin-bottom: 10px; list-style: none; }
+        .newsletter { display: flex; margin-top: 15px; max-width: 400px; }
+        .newsletter input { flex: 1; padding: 12px; border: 1px solid #ddd; outline: none; font-size: 12px; }
+        .newsletter button { background: #333; color: #fff; border: none; padding: 0 20px; cursor: pointer; }
+        .copyright { text-align: center; font-size: 10px; color: #999; padding-top: 25px; border-top: 1px solid #eee; margin-top: 40px; }
+
+        /* Desktop Adjustments */
+        @media (min-width: 768px) {
+            .hero { padding-left: 10%; min-height: 600px; }
+            .hero-title { font-size: 56px; }
+            .features, .product-grid { grid-template-columns: repeat(4, 1fr); max-width: 1200px; margin: 0 auto; margin-top: 30px; }
+            footer > div { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">Pengiriman Seluruh Indonesia <i class="fas fa-truck" style="margin-left: 5px;"></i></div>
+
+    <header class="main-header">
+        <i class="fas fa-bars"></i>
+        <a href="#" class="logo">phyu Luxury</a>
+        <div class="header-icons">
+            <i class="fas fa-search"></i>
+            <i class="far fa-user"></i>
+            <i class="fas fa-shopping-bag"></i>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-subtitle">Perhiasan Untuk Setiap Momen</p>
+                <h1 class="hero-title">Bersinar. Elegan. Itu kamu.</h1>
+                <p class="hero-desc">Koleksi perhiasan berkualitas desain minimalis untuk melengkapi setiap cerita berharga Anda.</p>
+                <a href="#" class="btn-gold">LIHAT KOLEKSI ></a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="f-item"><i class="far fa-gem"></i><div class="f-text"><h3>Kualitas Terjamin</h3><p>Emas asli & berlian</p></div></div>
+            <div class="f-item"><i class="fas fa-shield-alt"></i><div class="f-text"><h3>Terpercaya</h3><p>Garansi seumur hidup</p></div></div>
+            <div class="f-item"><i class="fas fa-gift"></i><div class="f-text"><h3>Kemasan Mewah</h3><p>Hadiah istimewa</p></div></div>
+            <div class="f-item"><i class="fas fa-shipping-fast"></i><div class="f-text"><h3>Pengiriman</h3><p>Seluruh Indonesia</p></div></div>
+        </section>
+
+        <section class="products">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 28px;">Koleksi Favorit</h2>
+            <div class="product-grid">
+                <div class="p-card">
+                    <div class="p-img"><img src="https://i.imgur.com/JndBDob.jpeg" alt="Kalung"></div>
+                    <div class="p-info"><h3>NECKLACE </h3><p class="price">Rp 2.950.000</p></div>
+                </div>
+                <div class="p-card">
+                    <div class="p-img"><img src="https://i.imgur.com/vUh7465.jpeg" alt="Cincin"></div>
+                    <div class="p-info"><h3>RING </h3><p class="price">Rp 2.150.000</p></div>
+                </div>
+                <div class="p-card">
+                    <div class="p-img"><img src="https://i.imgur.com/JepUxOL.jpeg" alt="Gelang"></div>
+                    <div class="p-info"><h3>BRACELET </h3><p class="price">Rp 2.350.000</p></div>
+                </div>
+                <div class="p-card">
+                    <div class="p-img"><img src="https://i.imgur.com/nTM5MC0.jpeg" alt="Anting"></div>
+                    <div class="p-info"><h3>EARING </h3><p class="price">Rp 2.250.000</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-final">
+            <img src="https://i.imgur.com/bnpiqp9.jpeg" alt="About phyu luxury" style="width: 100%; height: auto; display: block;">
+            <div class="about-overlay"></div>
+            <div class="about-content">
+                <div style="max-width: 500px; margin: 0 auto;">
+                    <p style="font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; color: #c5a676; font-weight: 600;">Tentang Phyu Luxury</p>
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(20px, 6vw, 28px); line-height: 1.3; margin-bottom: 15px;">Perhiasan yang menceritakan keindahanmu</h2>
+                    <p style="font-size: clamp(11px, 3.5vw, 13px); font-weight: 300; line-height: 1.6; margin-bottom: 25px; opacity: 0.9;">Phyu Luxury hadir untuk melengkapi setiap momen berharga dalam hidupmu dengan desain yang timeless.</p>
+                    <a href="#" style="font-size: 11px; font-weight: 600; color: #fff; text-decoration: none; border: 1.5px solid #fff; padding: 12px 30px; display: inline-block; letter-spacing: 1px;">SELENGKAPNYA</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-logo">phyu Luxury</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+            <div class="footer-col"><h4>BELANJA</h4><li>Kalung</li><li>Cincin</li><li>Gelang</li></div>
+            <div class="footer-col"><h4>BANTUAN</h4><li>Kontak</li><li>FAQ</li><li>Garansi</li></div>
+        </div>
+        <div class="footer-col">
+            <h4>NEWSLETTER</h4>
+            <div class="newsletter"><input type="email" placeholder="Email Anda"><button><i class="fas fa-arrow-right"></i></button></div>
+        </div>
+        <div class="copyright">© 2026 PHYU LUXURY. All rights reserved.</div>
+    </footer>
+
+</body>
+</html>
